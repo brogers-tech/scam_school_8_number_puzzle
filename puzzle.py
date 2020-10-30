@@ -101,23 +101,16 @@ def is_valid(board, position, value):
 
 def solve(board, positions, index):
     if index >= len(positions):
-        return True
-    position = positions[index]
-    (row, col) = position
-    solved = False
-    for i in range(1, 9):
-        valid = is_valid(board, position, i)
-        if valid:
-            board[row][col] = i 
-            solved = solve(board, positions, index + 1)
-            if solved:
-                break
-            else:
-                board[row][col] = 0
+        print_board(board)
     else:
-        return False
-    
-    return solved
+        position = positions[index]
+        (row, col) = position
+        for i in range(1, 9):
+            valid = is_valid(board, position, i)
+            if valid:
+                board[row][col] = i 
+                solve(board, positions, index + 1)
+                board[row][col] = 0
 
 def print_board(board):
     print('     ---')
@@ -132,19 +125,3 @@ def print_board(board):
     print('     ---')
 
 solve(board, positions, 0)
-print_board(board)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
