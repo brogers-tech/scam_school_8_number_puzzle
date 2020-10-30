@@ -119,18 +119,20 @@ def solve(board, positions, index):
     
     return solved
 
-solve(board, positions, 0)
-print('     ---')
-for (i, b) in enumerate(board):
-    if i == 0 or i == 3:
-        print(f"    | {b[1]} |")
-    else:
-        if i == 1:
+def print_board(board):
+    print('     ---')
+    for (i, b) in enumerate(board):
+        if i == 0 or i == 3:
+            print(f"    | {b[1]} |")
+        else:
+            if i == 1:
+                print('', '-' * 11)
+            print('| ' + ' | '.join(map(str, b)) + ' |')
             print('', '-' * 11)
-        print('| ' + ' | '.join(map(str, b)) + ' |')
-        print('', '-' * 11)
-print('     ---')
+    print('     ---')
 
+solve(board, positions, 0)
+print_board(board)
 
 
 
